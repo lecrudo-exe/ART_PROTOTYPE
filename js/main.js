@@ -216,27 +216,22 @@ class ImageModal {
                             </button>
                         </div>
                     </div>
-                    
                     <div class="modal-image-container">
                         <button class="modal-nav modal-prev" aria-label="Imagem anterior">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="15,18 9,12 15,6"></polyline>
                             </svg>
                         </button>
-                        
                         <div class="modal-image-wrapper">
                             <img class="modal-image" src="" alt="">
                         </div>
-                        
                         <button class="modal-nav modal-next" aria-label="Próxima imagem">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="9,18 15,12 9,6"></polyline>
                             </svg>
                         </button>
-                        
                         <div class="zoom-indicator">Zoom 1x</div>
                     </div>
-                    
                     <div class="modal-footer">
                         <div class="modal-artwork-details">
                             <h3>Detalhes Técnicos</h3>
@@ -255,7 +250,6 @@ class ImageModal {
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="modal-navigation">
                             <h3>Navegação</h3>
                             <div class="nav-buttons">
@@ -274,32 +268,23 @@ class ImageModal {
     bindEvents() {
         // Fechar modal
         this.modal.querySelector('.modal-close').addEventListener('click', () => this.close());
-        this.modal.querySelector('.modal-overlay').addEventListener('click', (e) => {
+        this.modal.querySelector('.modal-overlay').addEventListener('click', e => {
             if (e.target === e.currentTarget) this.close();
         });
-
         // Navegação
         this.modal.querySelector('.modal-prev').addEventListener('click', () => this.previous());
         this.modal.querySelector('.modal-next').addEventListener('click', () => this.next());
         this.modal.querySelector('.modal-prev-btn').addEventListener('click', () => this.previous());
         this.modal.querySelector('.modal-next-btn').addEventListener('click', () => this.next());
-
         // Zoom
         this.modal.querySelector('.modal-image-wrapper').addEventListener('click', () => this.toggleZoom());
-
         // Teclado
-        document.addEventListener('keydown', (e) => {
+        document.addEventListener('keydown', e => {
             if (!this.modal.classList.contains('active')) return;
             switch (e.key) {
-                case 'Escape':
-                    this.close();
-                    break;
-                case 'ArrowLeft':
-                    this.previous();
-                    break;
-                case 'ArrowRight':
-                    this.next();
-                    break;
+                case 'Escape': this.close(); break;
+                case 'ArrowLeft': this.previous(); break;
+                case 'ArrowRight': this.next(); break;
             }
         });
     }
@@ -307,10 +292,9 @@ class ImageModal {
     open(artwork, artworks) {
         this.currentArtwork = artwork;
         this.currentArtworks = artworks;
-        this.currentIndex = artworks.findIndex(art => art.id === artwork.id);
+        this.currentIndex = artworks.findIndex(a => a.id === artwork.id);
         this.isZoomed = false;
         this.zoomLevel = 1;
-        
         this.updateContent();
         this.modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -319,10 +303,6 @@ class ImageModal {
     close() {
         this.modal.classList.remove('active');
         document.body.style.overflow = '';
-        this.currentArtwork = null;
-        this.currentArtworks = [];
-        this.isZoomed = false;
-        this.zoomLevel = 1;
     }
 
     previous() {
@@ -346,7 +326,6 @@ class ImageModal {
     toggleZoom() {
         this.isZoomed = !this.isZoomed;
         this.zoomLevel = this.isZoomed ? 2 : 1;
-        
         const wrapper = this.modal.querySelector('.modal-image-wrapper');
         const indicator = this.modal.querySelector('.zoom-indicator');
         wrapper.style.transform = `scale(${this.zoomLevel})`;
@@ -357,7 +336,6 @@ class ImageModal {
     resetZoom() {
         this.isZoomed = false;
         this.zoomLevel = 1;
-        
         const wrapper = this.modal.querySelector('.modal-image-wrapper');
         const indicator = this.modal.querySelector('.zoom-indicator');
         wrapper.style.transform = 'scale(1)';
@@ -366,24 +344,16 @@ class ImageModal {
     }
 
     updateContent() {
-        const artwork = this.currentArtwork;
-        
-        // Header
-        this.modal.querySelector('.modal-title').textContent = artwork.title;
-        this.modal.querySelector('.modal-details').textContent = `${artwork.year} • ${artwork.technique}`;
+        const art = this.currentArtwork;
+        this.modal.querySelector('.modal-title').textContent = art.title;
+        this.modal.querySelector('.modal-details').textContent = `${art.year} • ${art.technique}`;
         this.modal.querySelector('.modal-counter').textContent = `${this.currentIndex + 1} de ${this.currentArtworks.length}`;
-        
-        // Atualiza a <img> com o caminho real da obra
         const imgEl = this.modal.querySelector('.modal-image');
-        imgEl.src = artwork.image;
-        imgEl.alt = artwork.title;
-        
-        // Footer details
-        this.modal.querySelector('.modal-year').textContent = artwork.year;
-        this.modal.querySelector('.modal-technique').textContent = artwork.technique;
-        this.modal.querySelector('.modal-dimensions').textContent = artwork.dimensions;
-        
-        // Navegação (habilita/desabilita)
+        imgEl.src = art.image;
+        imgEl.alt = art.title;
+        this.modal.querySelector('.modal-year').textContent = art.year;
+        this.modal.querySelector('.modal-technique').textContent = art.technique;
+        this.modal.querySelector('.modal-dimensions').textContent = art.dimensions;
         const hasPrev = this.currentIndex > 0;
         const hasNext = this.currentIndex < this.currentArtworks.length - 1;
         this.modal.querySelector('.modal-prev').style.display = hasPrev ? 'flex' : 'none';
@@ -393,7 +363,7 @@ class ImageModal {
     }
 }
 
-// Classe para gerenciar as galerias
+// Classe para gerenciar galerias e menu móvel
 class GalleryManager {
     constructor() {
         this.imageModal = new ImageModal();
@@ -402,11 +372,11 @@ class GalleryManager {
 
     init() {
         this.bindEvents();
-        this.initMobileMenu();
+        this.initMobileMenu();  // chama aqui
     }
 
     bindEvents() {
-        document.addEventListener('click', (e) => {
+        document.addEventListener('click', e => {
             const card = e.target.closest('.artwork-card');
             if (card) {
                 e.preventDefault();
@@ -432,7 +402,6 @@ class GalleryManager {
     renderGallery(decade, containerId) {
         const container = document.getElementById(containerId);
         if (!container || !artworksData[decade]) return;
-
         const items = artworksData[decade].map(art => `
             <div class="artwork-card" data-artwork-id="${art.id}" data-decade="${decade}">
                 <div class="artwork-image">
@@ -446,10 +415,9 @@ class GalleryManager {
                 </div>
             </div>
         `).join('');
-
         container.innerHTML = `
             <div class="gallery-header">
-                <h1>D é cada de ${decade.toUpperCase()}</h1>
+                <h1>Década de ${decade.toUpperCase()}</h1>
                 <p>Explore as obras dos anos ${decade}</p>
             </div>
             <div class="artworks-grid">${items}</div>

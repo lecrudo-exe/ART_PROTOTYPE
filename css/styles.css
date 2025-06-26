@@ -549,7 +549,6 @@ body {
     }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .nav-list {
         display: none;
@@ -557,6 +556,20 @@ body {
 
     .mobile-menu-btn {
         display: flex;
+    }
+
+    /* === Menu móvel ativo === */
+    .nav-list.mobile-active {
+        display: flex;                   /* mostra o menu */
+        flex-direction: column;          /* empilha os links */
+        position: absolute;              /* sai do fluxo */
+        top: 100%;                       /* logo abaixo do header */
+        left: 0;
+        width: 100%;
+        background: rgba(234, 224, 213, 0.95); /* mesma cor do header */
+        padding: var(--spacing-md) 0;
+        gap: var(--spacing-md);
+        z-index: 1001;                   /* acima de tudo */
     }
 
     .decades-grid {
@@ -597,6 +610,8 @@ body {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+
 
 
 
