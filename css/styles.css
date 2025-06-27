@@ -550,6 +550,7 @@ body {
 }
 
 @media (max-width: 768px) {
+    
     .nav-list {
         display: none;
     }
@@ -1066,4 +1067,60 @@ body {
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(8px);
   */
+}
+@media (max-width: 768px) {
+  /* 1) Esconde nav desktop e mostra hamburger */
+  .nav-list {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+
+  /* 2) Layout do menu aberto */
+  .nav-list.mobile-active {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(234,224,213,0.95);
+    padding: var(--spacing-md) 0;
+    gap: var(--spacing-md);
+    z-index: 1001;
+  }
+
+  /* 3) Permite posicionar o dropdown em relação ao btn “Décadas” */
+  .nav-list.mobile-active .dropdown {
+    position: relative;
+  }
+
+  /* 4) Exibe sempre o submenu, centralizado sob o toggle */
+  .nav-list.mobile-active .dropdown-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: absolute !important;
+    top: calc(100% + 4px) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: #fff !important;
+    box-shadow: var(--shadow-lg) !important;
+    border: 1px solid rgba(212,175,55,0.3) !important;
+    border-radius: var(--radius-md) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 200px !important;
+    transition: none !important;
+    z-index: 1002;
+    text-align: center;
+  }
+
+  /* 5) Ajuste de padding nos links */
+  .nav-list.mobile-active .dropdown-menu a {
+    padding: var(--spacing-xs) var(--spacing-md) !important;
+  }
 }
