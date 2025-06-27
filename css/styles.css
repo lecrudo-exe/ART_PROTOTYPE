@@ -1042,3 +1042,28 @@ body {
   box-shadow: var(--shadow-md);
   border-radius: var(--radius-sm);
 }
+/* CENTRALIZA O CONTEÚDO DO MODAL */
+.image-modal .modal-overlay {
+  display: flex;
+  justify-content: center; /* alinha horizontalmente */
+  align-items: center;     /* alinha verticalmente */
+}
+
+/* ZOOM PELO CENTRO */
+.image-modal .modal-image-wrapper {
+  transform-origin: center center;
+}
+.image-modal .modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* fundo transparente + blur */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+
+  /* caso queira um leve escurecimento também:
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  */
+}

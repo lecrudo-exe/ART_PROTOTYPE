@@ -1,6 +1,9 @@
 // main.js
 
 // Dados das obras de arte
+// main.js
+
+// Dados das obras de arte
 const artworksData = {
     '70s': [
         {
@@ -9,8 +12,8 @@ const artworksData = {
             year: 1975,
             technique: "Óleo sobre tela",
             dimensions: "100x80cm",
-            image: "images/anos70/72_-Fios.JPG",
-            thumbnail: "images/anos70/thumbs/72_-Fios.JPG"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
             id: 2,
@@ -18,8 +21,8 @@ const artworksData = {
             year: 1977,
             technique: "Acrílica sobre madeira",
             dimensions: "60x40cm",
-            image: "images/70s/natureza-morta.jpg",
-            thumbnail: "images/70s/thumbs/natureza-morta.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
             id: 3,
@@ -27,10 +30,11 @@ const artworksData = {
             year: 1979,
             technique: "Técnica mista",
             dimensions: "120x90cm",
-            image: "images/70s/paisagem-interior.jpg",
-            thumbnail: "images/70s/thumbs/paisagem-interior.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         }
     ],
+
     '80s': [
         {
             id: 4,
@@ -38,8 +42,8 @@ const artworksData = {
             year: 1982,
             technique: "Acrílica sobre tela",
             dimensions: "120x100cm",
-            image: "images/80s/abstracao-geometrica.jpg",
-            thumbnail: "images/80s/thumbs/abstracao-geometrica.jpg"
+            image: "anos80/82_EVA_.JPG",
+            thumbnail: "anos80/82_EVA_.JPG"
         },
         {
             id: 5,
@@ -47,8 +51,8 @@ const artworksData = {
             year: 1985,
             technique: "Óleo sobre tela",
             dimensions: "110x90cm",
-            image: "images/80s/cores-outono.jpg",
-            thumbnail: "images/80s/thumbs/cores-outono.jpg"
+            image: "anos80/82_EVA_.JPG",
+            thumbnail: "anos80/82_EVA_.JPG"
         },
         {
             id: 6,
@@ -56,127 +60,143 @@ const artworksData = {
             year: 1988,
             technique: "Técnica mista",
             dimensions: "150x120cm",
-            image: "images/80s/movimento.jpg",
-            thumbnail: "images/80s/thumbs/movimento.jpg"
-        }
-    ],
-    '90s': [
+            image: "anos80/82_EVA_.JPG",
+            thumbnail: "anos80/82_EVA_.JPG"
+        },
         {
             id: 7,
+            title: "EVA",
+            year: 1982,
+            technique: "Acrílica sobre tela",
+            dimensions: "–x–cm",
+            image: "anos80/82_EVA_.JPG",
+            thumbnail: "anos80/82_EVA_.JPG"
+        }
+    ],
+
+    '90s': [
+        {
+            id: 8,
             title: "Fragmentos",
             year: 1992,
             technique: "Colagem e tinta",
             dimensions: "80x60cm",
-            image: "images/90s/fragmentos.jpg",
-            thumbnail: "images/90s/thumbs/fragmentos.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
-            id: 8,
+            id: 9,
             title: "Luz e Sombra",
             year: 1995,
             technique: "Óleo sobre tela",
             dimensions: "100x80cm",
-            image: "images/90s/luz-sombra.jpg",
-            thumbnail: "images/90s/thumbs/luz-sombra.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
-            id: 9,
+            id: 10,
             title: "Expressão",
             year: 1998,
             technique: "Acrílica sobre tela",
             dimensions: "130x100cm",
-            image: "images/90s/expressao.jpg",
-            thumbnail: "images/90s/thumbs/expressao.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         }
     ],
+
     '2000s': [
         {
-            id: 10,
+            id: 11,
             title: "Novo Milênio",
             year: 2001,
             technique: "Técnica mista",
             dimensions: "160x120cm",
-            image: "images/2000s/novo-milenio.jpg",
-            thumbnail: "images/2000s/thumbs/novo-milenio.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
-            id: 11,
+            id: 12,
             title: "Fragmentos",
             year: 2004,
             technique: "Acrílica sobre tela",
             dimensions: "120x90cm",
-            image: "images/2000s/fragmentos.jpg",
-            thumbnail: "images/2000s/thumbs/fragmentos.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
-            id: 12,
+            id: 13,
             title: "Metamorfose",
             year: 2007,
             technique: "Óleo sobre tela",
             dimensions: "180x140cm",
-            image: "images/2000s/metamorfose.jpg",
-            thumbnail: "images/2000s/thumbs/metamorfose.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         }
     ],
+
     '2010s': [
         {
-            id: 13,
+            id: 14,
             title: "Digital Dreams",
             year: 2012,
             technique: "Técnica mista digital",
             dimensions: "200x150cm",
-            image: "images/2010s/digital-dreams.jpg",
-            thumbnail: "images/2010s/thumbs/digital-dreams.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
-            id: 14,
+            id: 15,
             title: "Conexões",
             year: 2015,
             technique: "Acrílica sobre tela",
             dimensions: "140x110cm",
-            image: "images/2010s/conexoes.jpg",
-            thumbnail: "images/2010s/thumbs/conexoes.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
-            id: 15,
+            id: 16,
             title: "Reflexos",
             year: 2018,
             technique: "Óleo sobre tela",
             dimensions: "160x120cm",
-            image: "images/2010s/reflexos.jpg",
-            thumbnail: "images/2010s/thumbs/reflexos.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         }
     ],
+
     '2020s': [
         {
-            id: 16,
+            id: 17,
             title: "Pandemia",
             year: 2021,
             technique: "Técnica mista",
             dimensions: "180x140cm",
-            image: "images/2020s/pandemia.jpg",
-            thumbnail: "images/2020s/thumbs/pandemia.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
-            id: 17,
+            id: 18,
             title: "Renascimento",
             year: 2023,
             technique: "Acrílica sobre tela",
             dimensions: "200x160cm",
-            image: "images/2020s/renascimento.jpg",
-            thumbnail: "images/2020s/thumbs/renascimento.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
-            id: 18,
+            id: 19,
             title: "Futuro",
             year: 2024,
             technique: "Técnica mista digital",
             dimensions: "220x180cm",
-            image: "images/2020s/futuro.jpg",
-            thumbnail: "images/2020s/thumbs/futuro.jpg"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         }
     ]
 };
+
+// … restante do seu código (ImageModal, GalleryManager etc.) permanece igual.
+
 
 // Classe para gerenciar o modal de imagem
 class ImageModal {
