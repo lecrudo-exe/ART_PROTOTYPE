@@ -77,6 +77,16 @@
             background-attachment: fixed;
             min-height: 100vh;
             padding-top: 5rem;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        body.exiting {
+            opacity: 0;
         }
 
         body.home {

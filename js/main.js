@@ -447,10 +447,21 @@ class GalleryManager {
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('loaded');
     const gm = new GalleryManager();
     const galleryContainer = document.getElementById('gallery-container');
     if (galleryContainer) {
         const decade = galleryContainer.dataset.decade;
         gm.renderGallery(decade, 'gallery-container');
-    }
+
+    } document.querySelectorAll('a.nav-link').forEach(a => {
+        a.addEventListener('click', e => {
+            const href = a.getAttribute('href');
+            if (!href || href.startsWith('http') || href.startsWith('#')) return;
+            e.preventDefault();
+            document.body.classList.remove('loaded');
+            document.body.classList.add('exiting');
+            setTimeout(() => window.location = href, 500); // deve bater com o transition-duration
+        });
+    });
 });
