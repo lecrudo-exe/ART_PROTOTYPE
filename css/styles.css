@@ -1,9 +1,10 @@
-        /* Reset e Base */
+/* Reset e Base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
 
         .fds {
             /* Ajuste o caminho conforme sua estrutura de pastas */
@@ -33,8 +34,7 @@
 
             /* Gradientes */
             --gradient-primary: linear-gradient(135deg, #EAE0D5 0%, #D8C3A5 100%);
-            /* deixamos o accent para detalhes (se necessário) */
-            --gradient-accent: linear-gradient(135deg, #C7B59A 0%, #B8A581 100%);
+            --gradient-accent: linear-gradient(135deg, #000000 0%, #c7b189 100%);
             --gradient-paper: radial-gradient(circle at 20% 80%, rgba(122, 108, 93, 0.05) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(139, 107, 76, 0.05) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(122, 108, 93, 0.03) 0%, transparent 50%);
@@ -64,6 +64,7 @@
             --radius-md: 0.5rem;
             --radius-lg: 0.75rem;
             --radius-xl: 1rem;
+            --header-height: 5rem;
         }
 
 
@@ -114,7 +115,6 @@
             left: 0;
             right: 0;
             height: 5rem;
-
         }
 
         .header-content {
@@ -146,6 +146,7 @@
         }
 
         .nav-link {
+            font-family: var(--font-sans);
             font-weight: 500;
             color: var(--color-neutral);
             text-decoration: none;
@@ -627,60 +628,6 @@
             }
         }
 
-        @media (max-width: 768px) {
-
-            .nav-list {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
-
-            /* === Menu móvel ativo === */
-            .nav-list.mobile-active {
-                display: flex;
-                /* mostra o menu */
-                flex-direction: column;
-                /* empilha os links */
-                position: absolute;
-                /* sai do fluxo */
-                top: 100%;
-                /* logo abaixo do header */
-                left: 0;
-                width: 100%;
-                background: rgba(234, 224, 213, 0.95);
-                /* mesma cor do header */
-                padding: var(--spacing-md) 0;
-                gap: var(--spacing-md);
-                z-index: 1001;
-                /* acima de tudo */
-            }
-
-            .decades-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: var(--spacing-md);
-            }
-
-            .decade-card {
-                padding: var(--spacing-lg);
-            }
-
-            .decade-title {
-                font-size: 1.5rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-        }
 
         @media (max-width: 480px) {
             .container {
@@ -823,8 +770,8 @@
         }
 
         .achievement-card {
-            background: linear-gradient(135deg, rgba(240, 230, 140, 0.9) 0%, rgba(240, 230, 140, 0.9) 100%);
-            border: 2px solid rgba(212, 175, 55, 0.3);
+            background: var(--gradient-primary);
+            border: 1px solid rgba(160, 129, 92, 0.2);
             border-radius: var(--radius-lg);
             padding: var(--spacing-lg);
             box-shadow: var(--shadow-md);
@@ -904,8 +851,9 @@
         }
 
         .contact-info {
-            background: linear-gradient(135deg, rgba(240, 230, 140, 0.9) 0%, rgba(240, 230, 140, 0.9) 100%);
-            border: 2px solid rgba(212, 175, 55, 0.3);
+            background: var(--gradient-primary);
+            border: 1px solid rgba(160, 129, 92, 0.2);
+
             border-radius: var(--radius-lg);
             padding: var(--spacing-xl);
             box-shadow: var(--shadow-md);
@@ -955,8 +903,9 @@
 
         /* Form Styles */
         .contact-form {
-            background: linear-gradient(135deg, rgba(240, 230, 140, 0.9) 0%, rgba(240, 230, 140, 0.9) 100%);
-            border: 2px solid rgba(212, 175, 55, 0.3);
+            background: var(--gradient-primary);
+            border: 1px solid rgba(160, 129, 92, 0.2);
+            box-shadow: var(--shadow-sm);
             border-radius: var(--radius-lg);
             padding: var(--spacing-xl);
             box-shadow: var(--shadow-md);
@@ -1065,8 +1014,10 @@
         }
 
         .info-card {
-            background: linear-gradient(135deg, rgba(240, 230, 140, 0.9) 0%, rgba(240, 230, 140, 0.9) 100%);
-            border: 2px solid rgba(212, 175, 55, 0.3);
+            background: var(--gradient-primary);
+            border: 1px solid rgba(160, 129, 92, 0.2);
+            box-shadow: var(--shadow-sm);
+
             border-radius: var(--radius-lg);
             padding: var(--spacing-lg);
             box-shadow: var(--shadow-md);
@@ -1166,52 +1117,23 @@
                 display: flex !important;
             }
 
-            /* 2) Layout do menu aberto */
-            .nav-list.mobile-active {
-                display: flex !important;
-                flex-direction: column;
-                align-items: center;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(234, 224, 213, 0.95);
-                padding: var(--spacing-md) 0;
-                gap: var(--spacing-md);
-                z-index: 1001;
-            }
 
-            /* 3) Permite posicionar o dropdown em relação ao btn “Décadas” */
-            .nav-list.mobile-active .dropdown {
-                position: relative;
-            }
+
 
             /* 4) Exibe sempre o submenu, centralizado sob o toggle */
-            .nav-list.mobile-active .dropdown-menu {
-                display: flex !important;
-                flex-direction: column !important;
-                opacity: 1 !important;
-                visibility: visible !important;
-                position: absolute !important;
-                top: calc(100% + 4px) !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                background: #fff !important;
-                box-shadow: var(--shadow-lg) !important;
-                border: 1px solid rgba(212, 175, 55, 0.3) !important;
-                border-radius: var(--radius-md) !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                min-width: 200px !important;
-                transition: none !important;
-                z-index: 1002;
-                text-align: center;
-            }
 
             /* 5) Ajuste de padding nos links */
-            .nav-list.mobile-active .dropdown-menu a {
-                padding: var(--spacing-xs) var(--spacing-md) !important;
-            }
+        }
+
+        .header {
+            z-index: 1100;
+            /* header acima do menu */
+        }
+
+        .mobile-menu-btn {
+            position: relative;
+            z-index: 1101;
+            /* botão sempre acima de tudo */
         }
 
         /* == SOBREESCRITAS PARA HERO FULL-SCREEN E HEADER TRANSPARENTE == */
@@ -1243,48 +1165,6 @@
             color: var(--color-accent) !important;
         }
 
-        /* 3) Hero passa a ocupar 100vh com a imagem de fundo */
-
-        /* 4) Se precisar centralizar algo dentro do hero, você pode usar: */
-        /*
-    .hero-image-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    }
-    */
-
-        /* 5) Ajustes no dropdown para mobile sobre a imagem */
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: flex;
-            }
-
-            .nav-list {
-                display: none;
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.9);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000;
-            }
-
-            .nav-list.mobile-active {
-                display: flex !important;
-            }
-
-            .dropdown-menu {
-                position: static !important;
-                transform: none !important;
-                opacity: 1 !important;
-                visibility: visible !important;
-                background: none !important;
-                box-shadow: none !important;
-                margin-top: var(--spacing-sm);
-            }
-        }
 
         .dropdown-menu {
             background: rgba(245, 245, 245, 0.95) !important;
@@ -1300,9 +1180,6 @@
         }
 
         /* no mobile, garante também o fundo claro */
-        .nav-list.mobile-active .dropdown-menu {
-            background: rgba(245, 245, 245, 0.95) !important;
-        }
 
         /* ======= tornar o texto branco para fundo escuro ======= */
         body {
@@ -1352,17 +1229,208 @@
         /* ========================
     Override do menu mobile
     ======================== */
-        @media (max-width: 768px) {
 
-            /* Limpa qualquer background que esteja vindo de outros blocos */
-            .nav-list,
-            .nav-list.mobile-active {
-                background: transparent !important;
+        /* ===== override para páginas internas ===== */
+        body:not(.home) {
+            /* restaura as cores de texto */
+            --color-secondary: #6E5E4A;
+            /* marrom escuro */
+            --color-neutral: #8A7E6F;
+            /* bege médio */
+            --color-accent: #C7B59A;
+            /* bege claro */
+
+            /* textura de papiro */
+            background-image: url("../assets/papyro.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* ===== textos brancos sobre a textura de papiro ===== */
+        body:not(.home) {
+            color: #fff;
+            /* texto principal */
+        }
+
+        /* Cabeçalhos e subtítulos */
+        body:not(.home) h1,
+        body:not(.home) h2,
+        body:not(.home) h3,
+        body:not(.home) h4,
+        body:not(.home) h5,
+        body:not(.home) h6 {
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Parágrafos, links e labels */
+        body:not(.home) p,
+        body:not(.home) a,
+        body:not(.home) label,
+        body:not(.home) .decade-title,
+        body:not(.home) .decade-subtitle,
+        body:not(.home) .detail-item span {
+            color: #fafafa;
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Navegação (logo e links do header interno) */
+        .header:not(.home) .logo,
+        .header:not(.home) .nav-link {
+            color: #fff !important;
+            text-shadow: none;
+        }
+
+        /* Se precisar de contraste extra nos botões secundários */
+        body:not(.home) .btn-secondary {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        body:not(.home) .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Modal e demais componentes, garantindo texto branco */
+        body:not(.home) .modal-title,
+        body:not(.home) .modal-details,
+        body:not(.home) .modal-artwork-details h3,
+        body:not(.home) .modal-year,
+        body:not(.home) .modal-technique,
+        body:not(.home) .modal-dimensions {
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+
+        .header {
+            z-index: 1000;
+        }
+
+        .mobile-menu-btn {
+            position: relative;
+            z-index: 1001;
+        }
+
+        /* animação de slide-down para a nav */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
             }
 
-            /* Se quiser uma leve transparência de “papel” por trás dos itens:
-    .nav-list.mobile-active {
-        background: rgba(249, 246, 240, 0.85) !important;
-    }
-    */
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
+
+        /* animação de slide-down para a nav */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* animação de slide-down para a nav */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* animação de fade-in para cada link */
+        @keyframes fadeInLink {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+  .nav-list {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: flex;
+  }
+  .nav-list.mobile-active {
+    position: fixed;
+    top: calc(var(--header-height) + 2rem);
+    left: 50%;
+    width: 90vw;
+    max-width: 400px;
+    height: auto;
+    min-height: 0;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl) 0;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(8px);
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    z-index: 2000;
+    transform: translateX(-50%);
+    animation: slideDownMenu 0.4s cubic-bezier(0.4,0,0.2,1) forwards;
+    will-change: transform, opacity;
+  }
+
+@keyframes slideDownMenu {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+  .nav-list.mobile-active .nav-link {
+    color: #222 !important;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-shadow: none;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInLink 0.4s cubic-bezier(0.4,0,0.2,1) forwards;
+  }
+  /* Animação em cascata para cada link */
+  .nav-list.mobile-active .nav-link:nth-child(1) { animation-delay: 0.08s; }
+  .nav-list.mobile-active .nav-link:nth-child(2) { animation-delay: 0.16s; }
+  .nav-list.mobile-active .nav-link:nth-child(3) { animation-delay: 0.24s; }
+  .nav-list.mobile-active .nav-link:nth-child(4) { animation-delay: 0.32s; }
+  .nav-list.mobile-active .nav-link:nth-child(5) { animation-delay: 0.40s; }
+  .nav-list.mobile-active .nav-link:nth-child(6) { animation-delay: 0.48s; }
+  .nav-list.mobile-active .nav-link.active {
+    color: var(--color-secondary) !important;
+    text-decoration: underline;
+  }
+}
+
+/* Remove regras antigas e duplicadas para evitar conflitos */
+.nav-list.mobile-active {
+  /* apenas para garantir que não há sobrescrita fora do media query */
+}

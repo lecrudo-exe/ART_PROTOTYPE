@@ -219,69 +219,69 @@ class ImageModal {
         this.modal = document.createElement('div');
         this.modal.className = 'image-modal';
         this.modal.innerHTML = `
-            <div class="modal-overlay">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="modal-info">
-                            <h2 class="modal-title"></h2>
-                            <p class="modal-details"></p>
+                <div class="modal-overlay">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-info">
+                                <h2 class="modal-title"></h2>
+                                <p class="modal-details"></p>
+                            </div>
+                            <div class="modal-controls">
+                                <span class="modal-counter"></span>
+                                <button class="modal-close" aria-label="Fechar modal">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
-                        <div class="modal-controls">
-                            <span class="modal-counter"></span>
-                            <button class="modal-close" aria-label="Fechar modal">
+                        <div class="modal-image-container">
+                            <button class="modal-nav modal-prev" aria-label="Imagem anterior">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    <polyline points="15,18 9,12 15,6"></polyline>
                                 </svg>
                             </button>
+                            <div class="modal-image-wrapper">
+                                <img class="modal-image" src="" alt="">
+                            </div>
+                            <button class="modal-nav modal-next" aria-label="Próxima imagem">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9,18 15,12 9,6"></polyline>
+                                </svg>
+                            </button>
+                            <div class="zoom-indicator">Zoom 1x</div>
                         </div>
-                    </div>
-                    <div class="modal-image-container">
-                        <button class="modal-nav modal-prev" aria-label="Imagem anterior">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="15,18 9,12 15,6"></polyline>
-                            </svg>
-                        </button>
-                        <div class="modal-image-wrapper">
-                            <img class="modal-image" src="" alt="">
-                        </div>
-                        <button class="modal-nav modal-next" aria-label="Próxima imagem">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9,18 15,12 9,6"></polyline>
-                            </svg>
-                        </button>
-                        <div class="zoom-indicator">Zoom 1x</div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="modal-artwork-details">
-                            <h3>Detalhes Técnicos</h3>
-                            <div class="details-grid">
-                                <div class="detail-item">
-                                    <span class="detail-label">Ano:</span>
-                                    <span class="detail-value modal-year"></span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="detail-label">Técnica:</span>
-                                    <span class="detail-value modal-technique"></span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="detail-label">Dimensões:</span>
-                                    <span class="detail-value modal-dimensions"></span>
+                        <div class="modal-footer">
+                            <div class="modal-artwork-details">
+                                <h3>Detalhes Técnicos</h3>
+                                <div class="details-grid">
+                                    <div class="detail-item">
+                                        <span class="detail-label">Ano:</span>
+                                        <span class="detail-value modal-year"></span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Técnica:</span>
+                                        <span class="detail-value modal-technique"></span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Dimensões:</span>
+                                        <span class="detail-value modal-dimensions"></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="modal-navigation">
-                            <h3>Navegação</h3>
-                            <div class="nav-buttons">
-                                <button class="btn btn-secondary modal-prev-btn">← Anterior</button>
-                                <button class="btn btn-secondary modal-next-btn">Próxima →</button>
+                            <div class="modal-navigation">
+                                <h3>Navegação</h3>
+                                <div class="nav-buttons">
+                                    <button class="btn btn-secondary modal-prev-btn">← Anterior</button>
+                                    <button class="btn btn-secondary modal-next-btn">Próxima →</button>
+                                </div>
+                                <p class="keyboard-hint">💡 Use as setas do teclado para navegar • ESC para fechar</p>
                             </div>
-                            <p class="keyboard-hint">💡 Use as setas do teclado para navegar • ESC para fechar</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
         document.body.appendChild(this.modal);
     }
 
@@ -415,6 +415,7 @@ class GalleryManager {
             btn.addEventListener('click', () => {
                 nav.classList.toggle('mobile-active');
                 btn.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
             });
         }
     }
@@ -423,25 +424,25 @@ class GalleryManager {
         const container = document.getElementById(containerId);
         if (!container || !artworksData[decade]) return;
         const items = artworksData[decade].map(art => `
-            <div class="artwork-card" data-artwork-id="${art.id}" data-decade="${decade}">
-                <div class="artwork-image">
-                    <img src="${art.thumbnail}" alt="${art.title}">
+                <div class="artwork-card" data-artwork-id="${art.id}" data-decade="${decade}">
+                    <div class="artwork-image">
+                        <img src="${art.thumbnail}" alt="${art.title}">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>${art.title}</h3>
+                        <p><strong>Ano:</strong> ${art.year}</p>
+                        <p><strong>Técnica:</strong> ${art.technique}</p>
+                        <p><strong>Dimensões:</strong> ${art.dimensions}</p>
+                    </div>
                 </div>
-                <div class="artwork-info">
-                    <h3>${art.title}</h3>
-                    <p><strong>Ano:</strong> ${art.year}</p>
-                    <p><strong>Técnica:</strong> ${art.technique}</p>
-                    <p><strong>Dimensões:</strong> ${art.dimensions}</p>
-                </div>
-            </div>
-        `).join('');
+            `).join('');
         container.innerHTML = `
-            <div class="gallery-header">
-                <h1>Década de ${decade.toUpperCase()}</h1>
-                <p>Explore as obras dos anos ${decade}</p>
-            </div>
-            <div class="artworks-grid">${items}</div>
-        `;
+                <div class="gallery-header">
+                    <h1>Década de ${decade.toUpperCase()}</h1>
+                    <p>Explore as obras dos anos ${decade}</p>
+                </div>
+                <div class="artworks-grid">${items}</div>
+            `;
     }
 }
 
