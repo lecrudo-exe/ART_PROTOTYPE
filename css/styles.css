@@ -23,14 +23,17 @@
             /* Tons de papel */
             --color-primary: #F9F6F0;
             /* fundo suave */
-            --color-secondary: #6E5E4A;
+            --color-secondary: #2E2E2E;      /* novo texto base                   */
             /* texto principal */
-            --color-accent: #C7B59A;
+            --color-accent: #9E7044;      /* dourado queimado → estados hover  */
             /* detalhes e hover */
-            --color-neutral: #8A7E6F;
+            --color-neutral: #395B6B;      /* tom frio de equilíbrio            */
             /* subtítulos */
             --color-white: #FFFFFF;
             /* necessário para menus */
+
+            --color-card-bg:   #FAF5E9;
+            --color-btn-primary: #4E8D8B;
 
             /* Gradientes */
             --gradient-primary: linear-gradient(135deg, #EAE0D5 0%, #D8C3A5 100%);
@@ -107,7 +110,7 @@
             /* <- ativa o z-index */
             top: 0;
             z-index: 1000;
-            background: transparent;
+            background: var(--color-neutral);   /* teal fosco */
             backdrop-filter: blur(10px);
             border-bottom: 2px solid rgba(160, 129, 92, 0.3);
             position: fixed;
@@ -148,7 +151,7 @@
         .nav-link {
             font-family: var(--font-sans);
             font-weight: 500;
-            color: var(--color-neutral);
+            color: var(--color-card-bg);        /* off-white/bege */
             text-decoration: none;
             padding: var(--spacing-xs) var(--spacing-sm);
             border-radius: var(--radius-sm);
@@ -158,7 +161,7 @@
 
         .nav-link:hover,
         .nav-link.active {
-            color: var(--color-secondary);
+            color: var(--color-accent);         /* dourado queimado */
         }
 
         .nav-link.active::after {
@@ -548,25 +551,26 @@
 
         /* Footer */
         .footer {
-            background: rgba(184, 184, 184, 0.9);
-            border-top: 2px solid rgba(212, 175, 55, 0.3);
+            background: var(--color-card-bg);
+            border-top: 1px solid rgba(201, 179, 126, 0.5); /* dourado antigo 50% */
             padding: var(--spacing-xl) 0;
             margin-top: var(--spacing-xxl);
         }
 
         .footer-content {
             text-align: center;
+            color: #000 !important; /* força texto preto */
         }
 
         .footer-title {
             font-family: var(--font-serif);
             font-size: 1.5rem;
-            color: var(--color-secondary);
+            color: #000 !important;
             margin-bottom: var(--spacing-xs);
         }
 
         .footer-subtitle {
-            color: var(--color-neutral);
+            color: #000 !important;
             margin-bottom: var(--spacing-lg);
         }
 
@@ -601,7 +605,7 @@
         }
 
         .footer-copyright {
-            color: var(--color-neutral);
+            color: #000 !important;
             font-size: 0.9rem;
         }
 
