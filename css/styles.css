@@ -1438,3 +1438,7 @@
 .nav-list.mobile-active {
   /* apenas para garantir que não há sobrescrita fora do media query */
 }
+
+body, h1, h2, h3, h4, h5, h6, p, a, li, button, span, div, input, textarea {
+    font-family: Helvetica, Arial, sans-serif;
+}

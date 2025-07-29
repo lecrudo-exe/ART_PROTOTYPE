@@ -1,9 +1,6 @@
 // main.js
 
 // Dados das obras de arte
-// main.js
-
-// Dados das obras de arte
 const artworksData = {
     '70s': [
         {
@@ -42,8 +39,8 @@ const artworksData = {
             year: 1982,
             technique: "Acrílica sobre tela",
             dimensions: "120x100cm",
-            image: "anos80/82_EVA_.JPG",
-            thumbnail: "anos80/82_EVA_.JPG"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
             id: 5,
@@ -51,8 +48,8 @@ const artworksData = {
             year: 1985,
             technique: "Óleo sobre tela",
             dimensions: "110x90cm",
-            image: "anos80/82_EVA_.JPG",
-            thumbnail: "anos80/82_EVA_.JPG"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
             id: 6,
@@ -60,8 +57,8 @@ const artworksData = {
             year: 1988,
             technique: "Técnica mista",
             dimensions: "150x120cm",
-            image: "anos80/82_EVA_.JPG",
-            thumbnail: "anos80/82_EVA_.JPG"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         },
         {
             id: 7,
@@ -69,8 +66,8 @@ const artworksData = {
             year: 1982,
             technique: "Acrílica sobre tela",
             dimensions: "–x–cm",
-            image: "anos80/82_EVA_.JPG",
-            thumbnail: "anos80/82_EVA_.JPG"
+            image: "../anos80/82_EVA_.JPG",
+            thumbnail: "../anos80/82_EVA_.JPG"
         }
     ],
 
@@ -198,15 +195,10 @@ const artworksData = {
 // … restante do seu código (ImageModal, GalleryManager etc.) permanece igual.
 
 
-// Classe para gerenciar o modal de imagem
-class ImageModal {
+// Classe para gerenciar o modal de imagem simples
+class SimpleImageModal {
     constructor() {
         this.modal = null;
-        this.currentArtwork = null;
-        this.currentArtworks = [];
-        this.currentIndex = 0;
-        this.isZoomed = false;
-        this.zoomLevel = 1;
         this.init();
     }
 
@@ -217,182 +209,79 @@ class ImageModal {
 
     createModal() {
         this.modal = document.createElement('div');
-        this.modal.className = 'image-modal';
+        this.modal.className = 'simple-image-modal';
         this.modal.innerHTML = `
-                <div class="modal-overlay">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="modal-info">
-                                <h2 class="modal-title"></h2>
-                                <p class="modal-details"></p>
-                            </div>
-                            <div class="modal-controls">
-                                <span class="modal-counter"></span>
-                                <button class="modal-close" aria-label="Fechar modal">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="modal-image-container">
-                            <button class="modal-nav modal-prev" aria-label="Imagem anterior">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="15,18 9,12 15,6"></polyline>
-                                </svg>
-                            </button>
-                            <div class="modal-image-wrapper">
-                                <img class="modal-image" src="" alt="">
-                            </div>
-                            <button class="modal-nav modal-next" aria-label="Próxima imagem">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="9,18 15,12 9,6"></polyline>
-                                </svg>
-                            </button>
-                            <div class="zoom-indicator">Zoom 1x</div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="modal-artwork-details">
-                                <h3>Detalhes Técnicos</h3>
-                                <div class="details-grid">
-                                    <div class="detail-item">
-                                        <span class="detail-label">Ano:</span>
-                                        <span class="detail-value modal-year"></span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Técnica:</span>
-                                        <span class="detail-value modal-technique"></span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Dimensões:</span>
-                                        <span class="detail-value modal-dimensions"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-navigation">
-                                <h3>Navegação</h3>
-                                <div class="nav-buttons">
-                                    <button class="btn btn-secondary modal-prev-btn">← Anterior</button>
-                                    <button class="btn btn-secondary modal-next-btn">Próxima →</button>
-                                </div>
-                                <p class="keyboard-hint">💡 Use as setas do teclado para navegar • ESC para fechar</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
+            <div class="simple-modal-overlay">
+                <img class="simple-modal-image" src="" alt="">
+            </div>
+        `;
+        this.modal.style.display = 'none';
+        // Adiciona estilos diretamente para garantir visibilidade e sobreposição
+        Object.assign(this.modal.style, {
+            position: 'fixed',
+            inset: '0',
+            zIndex: '9999',
+            display: 'none',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'rgba(20,20,20,0.95)'
+        });
+        const overlay = this.modal.querySelector('.simple-modal-overlay');
+        Object.assign(overlay.style, {
+            width: '100vw',
+            height: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+        });
+        const img = this.modal.querySelector('.simple-modal-image');
+        Object.assign(img.style, {
+            maxWidth: '95vw',
+            maxHeight: '95vh',
+            objectFit: 'contain',
+            boxShadow: '0 0 32px #000a',
+            background: '#222',
+            borderRadius: '8px'
+        });
         document.body.appendChild(this.modal);
     }
 
     bindEvents() {
-        // Fechar modal
-        this.modal.querySelector('.modal-close').addEventListener('click', () => this.close());
-        this.modal.querySelector('.modal-overlay').addEventListener('click', e => {
+        // Fechar ao clicar fora da imagem
+        this.modal.querySelector('.simple-modal-overlay').addEventListener('click', e => {
             if (e.target === e.currentTarget) this.close();
         });
-        // Navegação
-        this.modal.querySelector('.modal-prev').addEventListener('click', () => this.previous());
-        this.modal.querySelector('.modal-next').addEventListener('click', () => this.next());
-        this.modal.querySelector('.modal-prev-btn').addEventListener('click', () => this.previous());
-        this.modal.querySelector('.modal-next-btn').addEventListener('click', () => this.next());
-        // Zoom
-        this.modal.querySelector('.modal-image-wrapper').addEventListener('click', () => this.toggleZoom());
-        // Teclado
+        // Fechar com ESC
         document.addEventListener('keydown', e => {
-            if (!this.modal.classList.contains('active')) return;
-            switch (e.key) {
-                case 'Escape': this.close(); break;
-                case 'ArrowLeft': this.previous(); break;
-                case 'ArrowRight': this.next(); break;
-            }
+            if (this.modal.style.display !== 'block') return;
+            if (e.key === 'Escape') this.close();
         });
     }
 
-    open(artwork, artworks) {
-        this.currentArtwork = artwork;
-        this.currentArtworks = artworks;
-        this.currentIndex = artworks.findIndex(a => a.id === artwork.id);
-        this.isZoomed = false;
-        this.zoomLevel = 1;
-        this.updateContent();
-        this.modal.classList.add('active');
+    open(artwork) {
+        const imgEl = this.modal.querySelector('.simple-modal-image');
+        imgEl.src = artwork.image;
+        imgEl.alt = artwork.title;
+        this.modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
 
     close() {
-        this.modal.classList.remove('active');
+        this.modal.style.display = 'none';
         document.body.style.overflow = '';
-    }
-
-    previous() {
-        if (this.currentIndex > 0) {
-            this.currentIndex--;
-            this.currentArtwork = this.currentArtworks[this.currentIndex];
-            this.updateContent();
-            this.resetZoom();
-        }
-    }
-
-    next() {
-        if (this.currentIndex < this.currentArtworks.length - 1) {
-            this.currentIndex++;
-            this.currentArtwork = this.currentArtworks[this.currentIndex];
-            this.updateContent();
-            this.resetZoom();
-        }
-    }
-
-    toggleZoom() {
-        this.isZoomed = !this.isZoomed;
-        this.zoomLevel = this.isZoomed ? 2 : 1;
-        const wrapper = this.modal.querySelector('.modal-image-wrapper');
-        const indicator = this.modal.querySelector('.zoom-indicator');
-        wrapper.style.transform = `scale(${this.zoomLevel})`;
-        wrapper.style.cursor = this.isZoomed ? 'zoom-out' : 'zoom-in';
-        indicator.textContent = `Zoom ${this.zoomLevel}x`;
-    }
-
-    resetZoom() {
-        this.isZoomed = false;
-        this.zoomLevel = 1;
-        const wrapper = this.modal.querySelector('.modal-image-wrapper');
-        const indicator = this.modal.querySelector('.zoom-indicator');
-        wrapper.style.transform = 'scale(1)';
-        wrapper.style.cursor = 'zoom-in';
-        indicator.textContent = 'Zoom 1x';
-    }
-
-    updateContent() {
-        const art = this.currentArtwork;
-        this.modal.querySelector('.modal-title').textContent = art.title;
-        this.modal.querySelector('.modal-details').textContent = `${art.year} • ${art.technique}`;
-        this.modal.querySelector('.modal-counter').textContent = `${this.currentIndex + 1} de ${this.currentArtworks.length}`;
-        const imgEl = this.modal.querySelector('.modal-image');
-        imgEl.src = art.image;
-        imgEl.alt = art.title;
-        this.modal.querySelector('.modal-year').textContent = art.year;
-        this.modal.querySelector('.modal-technique').textContent = art.technique;
-        this.modal.querySelector('.modal-dimensions').textContent = art.dimensions;
-        const hasPrev = this.currentIndex > 0;
-        const hasNext = this.currentIndex < this.currentArtworks.length - 1;
-        this.modal.querySelector('.modal-prev').style.display = hasPrev ? 'flex' : 'none';
-        this.modal.querySelector('.modal-next').style.display = hasNext ? 'flex' : 'none';
-        this.modal.querySelector('.modal-prev-btn').disabled = !hasPrev;
-        this.modal.querySelector('.modal-next-btn').disabled = !hasNext;
     }
 }
 
 // Classe para gerenciar galerias e menu móvel
 class GalleryManager {
     constructor() {
-        this.imageModal = new ImageModal();
+        this.imageModal = new SimpleImageModal();
         this.init();
     }
 
     init() {
         this.bindEvents();
-        this.initMobileMenu();  // chama aqui
+        this.initMobileMenu();
     }
 
     bindEvents() {
@@ -403,7 +292,7 @@ class GalleryManager {
                 const id = parseInt(card.dataset.artworkId, 10);
                 const decade = card.dataset.decade;
                 const art = artworksData[decade].find(a => a.id === id);
-                if (art) this.imageModal.open(art, artworksData[decade]);
+                if (art) this.imageModal.open(art);
             }
         });
     }
@@ -436,10 +325,10 @@ class GalleryManager {
                     </div>
                 </div>
             `).join('');
+        const formattedDecade = decade.endsWith('s') ? `${decade.slice(0, -1)}'s` : decade.toUpperCase();
         container.innerHTML = `
                 <div class="gallery-header">
-                    <h1>Década de ${decade.toUpperCase()}</h1>
-                    <p>Explore as obras dos anos ${decade}</p>
+                    <h1>${formattedDecade}</h1>
                 </div>
                 <div class="artworks-grid">${items}</div>
             `;

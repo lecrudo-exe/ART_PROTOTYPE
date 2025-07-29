@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Década de 2020S - Galeria de Arte Coccarelli</title>
+    <title>2020s - Galeria de Arte Coccarelli</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/gallery.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,37 +16,38 @@
 
 <body>
 
-                <!-- Header for 2020s page -->
-                <header class="header">
-                    <div class="container">
-                        <div class="header-content">
-<a href="../index.html" class="logo"><img src="../assets/LOGO2.png" alt="Logo coccarelli" style="height:48px;"></a>
-                            <nav class="nav">
-                                <ul class="nav-list">
-                                    <li><a href="../index.html" class="nav-link">Início</a></li>
-                                    <li class="dropdown">
-                                        <a href="" class="nav-link dropdown-toggle active">Décadas</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="70s.html">70S</a></li>
-                                            <li><a href="80s.html">80S</a></li>
-                                            <li><a href="90s.html">90S</a></li>
-                                            <li><a href="2000s.html">2000S</a></li>
-                                            <li><a href="2010s.html">2010S</a></li>
-                                            <li><a href="2020s.html">2020S</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="pages/sobre.html" class="nav-link">Sobre</a></li>
-                                    <li><a href="pages/contato.html" class="nav-link">Contato</a></li>
-                                    <li><a href="arquiteturas.html" class="nav-link">Arquiteturas</a></li>
-                                </ul>
-                                <!-- Mobile Menu Button -->
-                                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                                    <span></span><span></span><span></span>
-                                </button>
-                            </nav>
-                        </div>
-                    </div>
-                </header>
+    <!-- Header for 2020s page -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo"><img src="../assets/LOGO2.png" alt="Logo coccarelli"
+                        style="height:48px;"></a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html" class="nav-link">Início</a></li>
+                        <li><a href="sobre.html" class="nav-link">Sobre</a></li>
+                        <li class="dropdown">
+                            <a href="" class="nav-link dropdown-toggle active">Galeria</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="70s.html">70s</a></li>
+                                <li><a href="80s.html">80s</a></li>
+                                <li><a href="90s.html">90s</a></li>
+                                <li><a href="2000s.html">2000s</a></li>
+                                <li><a href="2010s.html">2010s</a></li>
+                                <li><a href="2020s.html">2020s</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contato.html" class="nav-link">Contato</a></li>
+                        <li><a href="arquiteturas.html" class="nav-link">Miscelânea</a></li>
+                    </ul>
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <span></span><span></span><span></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
 
     <!-- Main Content -->
     <main class="main">
@@ -56,7 +57,7 @@
                 <nav class="breadcrumb">
                     <a href="../index.html">Início</a>
                     <span>/</span>
-                    <span>Década de 2020S</span>
+                    <span>2020s</span>
                 </nav>
 
                 <!-- Gallery Container -->
@@ -113,19 +114,19 @@
     <!-- Scripts -->
     <script src="../js/main.js"></script>
     <script>
-    // Força navegação suave para os botões das décadas
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.decade-nav-card').forEach(function(a) {
-        a.addEventListener('click', function(e) {
-          const href = a.getAttribute('href');
-          if (!href || href.startsWith('http') || href.startsWith('#')) return;
-          e.preventDefault();
-          document.body.classList.remove('loaded');
-          document.body.classList.add('exiting');
-          setTimeout(function() { window.location = href; }, 500);
+        // Força navegação suave para os botões das décadas
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.decade-nav-card').forEach(function (a) {
+                a.addEventListener('click', function (e) {
+                    const href = a.getAttribute('href');
+                    if (!href || href.startsWith('http') || href.startsWith('#')) return;
+                    e.preventDefault();
+                    document.body.classList.remove('loaded');
+                    document.body.classList.add('exiting');
+                    setTimeout(function () { window.location = href; }, 500);
+                });
+            });
         });
-      });
-    });
     </script>
 </body>
 
