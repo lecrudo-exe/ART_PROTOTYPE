@@ -1245,11 +1245,7 @@
             /* bege claro */
 
             /* textura de papiro */
-            background-image: url("../assets/papyro5.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            background-image: url("../assets/fundo-assoalho-de-madeira.jpg");
         }
 
         /* ===== textos brancos sobre a textura de papiro ===== */
